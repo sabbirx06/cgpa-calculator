@@ -124,6 +124,11 @@ app.post('/api/courses', requireAuth, async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
+    
+    // Acquire a row-level lock on the user to prevent concurrent save race conditions
+    // which were causing duplicate courses to be inserted into the database.
+    await client.query('SELECT id FROM users WHERE id = $1 FOR UPDATE', [req.session.userId]);
+    
     await client.query('DELETE FROM user_courses WHERE user_id = $1', [req.session.userId]);
     
     for (let i = 0; i < courses.length; i++) {
