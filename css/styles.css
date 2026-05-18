@@ -377,12 +377,69 @@ select option {
   color: #eef2ff;
 }
 
-select.grade-bg-a { background-color: #48f4a1 !important; color: #041014 !important; border-color: #48f4a1 !important; background-image: linear-gradient(45deg, transparent 50%, #041014 50%), linear-gradient(135deg, #041014 50%, transparent 50%) !important; font-weight: 600; }
-select.grade-bg-a-minus { background-color: #2e8b57 !important; color: #ffffff !important; border-color: #2e8b57 !important; background-image: linear-gradient(45deg, transparent 50%, #ffffff 50%), linear-gradient(135deg, #ffffff 50%, transparent 50%) !important; font-weight: 600; }
-select.grade-bg-b { background-color: #ffe600 !important; color: #041014 !important; border-color: #ffe600 !important; background-image: linear-gradient(45deg, transparent 50%, #041014 50%), linear-gradient(135deg, #041014 50%, transparent 50%) !important; font-weight: 600; }
-select.grade-bg-c { background-color: #ff9d00 !important; color: #041014 !important; border-color: #ff9d00 !important; background-image: linear-gradient(45deg, transparent 50%, #041014 50%), linear-gradient(135deg, #041014 50%, transparent 50%) !important; font-weight: 600; }
-select.grade-bg-d { background-color: #ff5e00 !important; color: #ffffff !important; border-color: #ff5e00 !important; background-image: linear-gradient(45deg, transparent 50%, #ffffff 50%), linear-gradient(135deg, #ffffff 50%, transparent 50%) !important; font-weight: 600; }
-select.grade-bg-f { background-color: #ff2222 !important; color: #ffffff !important; border-color: #ff2222 !important; background-image: linear-gradient(45deg, transparent 50%, #ffffff 50%), linear-gradient(135deg, #ffffff 50%, transparent 50%) !important; font-weight: 600; }
+select.grade-bg-a {
+  background-color: #48f4a1 !important;
+  color: #041014 !important;
+  border-color: #48f4a1 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #041014 50%),
+    linear-gradient(135deg, #041014 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-a-minus {
+  background-color: #2e8b57 !important;
+  color: #ffffff !important;
+  border-color: #2e8b57 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-b-plus {
+  background-color: #d8e983 !important;
+  color: #000000 !important;
+  border-color: #d8e983 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #000000 50%),
+    linear-gradient(135deg, #000000 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-b {
+  background-color: #ffe600 !important;
+  color: #041014 !important;
+  border-color: #ffe600 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #041014 50%),
+    linear-gradient(135deg, #041014 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-c {
+  background-color: #ff9d00 !important;
+  color: #041014 !important;
+  border-color: #ff9d00 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #041014 50%),
+    linear-gradient(135deg, #041014 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-d {
+  background-color: #ff5e00 !important;
+  color: #ffffff !important;
+  border-color: #ff5e00 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%) !important;
+  font-weight: 600;
+}
+select.grade-bg-f {
+  background-color: #ff2222 !important;
+  color: #ffffff !important;
+  border-color: #ff2222 !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%) !important;
+  font-weight: 600;
+}
 
 input[type="number"] {
   max-width: 90px;

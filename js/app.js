@@ -16,138 +16,798 @@ const gradePoints = {
 const degreeCreditGoal = 124;
 
 const courseCatalog = [
-  { code: "CSE 110", name: "Programming Language I", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 161", name: "Programming Language I Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 162L", name: "Programming Language I Lab Equivalent", credits: 0, sectionId: "core-table-body" },
-  { code: "EEE 103", name: "Programming Language I Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "ECE 103", name: "Programming Language I Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 111", name: "Programming Language II", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 220", name: "Data Structures", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 221", name: "Algorithms", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 230", name: "Discrete Mathematics", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 260", name: "Digital Logic Design", credits: 3, sectionId: "core-table-body" },
-  { code: "EEE 283", name: "Digital Logic Design Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "ECE 283", name: "Digital Logic Design Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "EEE 301", name: "Digital Logic Design Equivalent", credits: 3, sectionId: "core-table-body" },
-  { code: "EEE 302", name: "Digital Logic Design Equivalent", credits: 0, sectionId: "core-table-body" },
-  { code: "CSE 321", name: "Operating System", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 330", name: "Numerical Methods", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 331", name: "Automata and Computability", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 340", name: "Computer Architecture", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 370", name: "Database Systems", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 420", name: "Compiler Design", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 421", name: "Computer Networks", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 422", name: "Artificial Intelligence", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 423", name: "Computer Graphics", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 470", name: "Software Engineering", credits: 3, sectionId: "core-table-body" },
-  { code: "CSE 400", name: "Project & Thesis", credits: 4, sectionId: "core-table-body" },
-  { code: "CSE 250", name: "Circuits and Electronics", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 251", name: "Electronic Devices and Circuits", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 310", name: "Object Oriented Programming", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 320", name: "Data Communication", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 341", name: "Microprocessor", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 342", name: "Computer Systems Engineering", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 350", name: "Digital Electronics and Pulse Techniques", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 360", name: "Computer Interface", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 390", name: "Technical Communication", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 391", name: "Programming for the Internet", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 392", name: "Signals and Systems", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 410", name: "Advance Programming In UNIX", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 419", name: "Programming Languages", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 424", name: "Pattern Recognition", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 425", name: "Neural Networks", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 426", name: "Basic Graph Theory", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 427", name: "Machine Learning", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 428", name: "Image Processing", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 429", name: "Basic Multimedia Theory", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 430", name: "Digital Signal Processing", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 431", name: "Natural Language Processing", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 432", name: "Speech Recognition and Synthesis", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 460", name: "VLSI Design", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 461", name: "Digital System Design", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 462", name: "Fault Tolerant Systems", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 471", name: "System Analysis and Design", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 472", name: "Human Computer Interface", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 473", name: "Decision Support System", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 474", name: "Simulation and Modeling", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 489", name: "Special Topics", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 490", name: "WAN Routing and Technologies / Special Topics", credits: 3, sectionId: "elective-table-body" },
-  { code: "CSE 491", name: "Independent Study", credits: 3, sectionId: "elective-table-body" },
-  { code: "ENG 091", name: "Foundation Course", credits: 0, sectionId: "fundamental-table-body" },
-  { code: "ENG 101", name: "English Fundamentals", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 102", name: "English Composition I", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 103", name: "Advanced Writing Skills and Presentation", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 092", name: "Remedial Course in Mathematics", credits: 0, sectionId: "fundamental-table-body" },
-  { code: "BIO 101", name: "Introduction to Biology", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CHE 101", name: "Introduction to Chemistry", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CSE 101", name: "Introduction to Computer Science", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENV 103", name: "Elements of Environmental Science", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 101", name: "Fundamentals of Mathematics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 110", name: "MATH I: Differential Calculus and Co-ordinate Geometry", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 120", name: "MATH II: Integral Calculus and Differential Equations", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 215", name: "MATH III: Complex Variables and Laplace Transformations", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "MAT 216", name: "MATH IV: Linear Algebra and Fourier Analysis", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "PHY 101", name: "Introduction to Physics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "PHY 111", name: "Principles of Physics I", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "PHY 112", name: "Principles of Physics II", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "STA 101", name: "Introduction to Statistics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "STA 201", name: "Elements of Statistics and Probabilities", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BNG 103", name: "Bangla Language and Literature", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 110", name: "English for Life", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 113", name: "Introduction to English Poetry", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 114", name: "Introduction to English Drama", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 115", name: "Introduction English Prose", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ENG 333", name: "Globalization and the Media", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HST 102", name: "The Modern World", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HST 103", name: "History of Bangladesh", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HST 104", name: "Global History Lab - A History of World since 1300", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 101", name: "World Civilization & Culture", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 102", name: "Introduction to Philosophy", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 103", name: "Ethics and Culture", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 207", name: "Narratives of Truth and Lies", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 210", name: "Streaming Media Cultures", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "HUM 301", name: "In the Archives", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ANT 101", name: "Introduction to Anthropology", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ANT 342", name: "Body and Society", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ANT 351", name: "Gender & Development", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BUS 102", name: "Business - Basics, Ethics and Environment", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BUS 201", name: "Business and Human Communication", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BUS 333", name: "Social Entrepreneurship Practicum", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BUS 335", name: "Sustainable Development and Social Enterprise", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "DEV 104", name: "Foundations of International Development", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "DEV 101", name: "Bangladesh Studies", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "DEV 201", name: "Health, Culture and Development", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ECO 101", name: "Introduction to Microeconomics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ECO 102", name: "Introduction to Macroeconomics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "ECO 105", name: "Introduction to Economics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "EMB 101", name: "Emergence of Bangladesh", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 101", name: "Introduction to Political Science", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 102", name: "Comparative Governance", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 103", name: "International Relations and Global Politics", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 201", name: "Introduction to Civic Engagement", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 202", name: "Foundations in Public Policy", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 203", name: "Political Theory", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "POL 210", name: "Youth and Global Movement", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "PSY 101", name: "Introduction to Psychology", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "PSY 102", name: "Understanding the Human Minds", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "SOC 101", name: "Introduction to Sociology", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "SOC 201 / ANT 202", name: "Social Inequality", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BU 201", name: "Community Engagement and Action", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 201", name: "Luxury and Oppression in a Globalized World (of Perfumes)", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 204", name: "Communication for Social Change", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 301", name: "For the Love of Food", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 302", name: "The Pursuit of Wellbeing", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 303", name: "Law for Life, Peace and Justice", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 304", name: "Documentary Film: Theory and Practice", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 305", name: "Borders and Beyond: Past and Future", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 306", name: "Ethical Leadership", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 307", name: "Art, Community and the Future", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 308", name: "Social Dimensions of Faith and Development", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 309", name: "Global Citizenship", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 310", name: "Social Cohesion and Peace Building", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 314", name: "Visual Storytelling: Understanding Society through Documentary Film", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "CST 333", name: "Personal Finance for Sustainable Economic Wellbeing", credits: 3, sectionId: "fundamental-table-body" },
-  { code: "BUS 334", name: "Social Intrapreneurship Practicum - Leading Change", credits: 3, sectionId: "fundamental-table-body" },
+  {
+    code: "CSE 110",
+    name: "Programming Language I",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 161",
+    name: "Programming Language I Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 162L",
+    name: "Programming Language I Lab Equivalent",
+    credits: 0,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "EEE 103",
+    name: "Programming Language I Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "ECE 103",
+    name: "Programming Language I Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 111",
+    name: "Programming Language II",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 220",
+    name: "Data Structures",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 221",
+    name: "Algorithms",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 230",
+    name: "Discrete Mathematics",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 260",
+    name: "Digital Logic Design",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "EEE 283",
+    name: "Digital Logic Design Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "ECE 283",
+    name: "Digital Logic Design Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "EEE 301",
+    name: "Digital Logic Design Equivalent",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "EEE 302",
+    name: "Digital Logic Design Equivalent",
+    credits: 0,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 321",
+    name: "Operating System",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 330",
+    name: "Numerical Methods",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 331",
+    name: "Automata and Computability",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 340",
+    name: "Computer Architecture",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 370",
+    name: "Database Systems",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 420",
+    name: "Compiler Design",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 421",
+    name: "Computer Networks",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 422",
+    name: "Artificial Intelligence",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 423",
+    name: "Computer Graphics",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 470",
+    name: "Software Engineering",
+    credits: 3,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 400",
+    name: "Project & Thesis",
+    credits: 4,
+    sectionId: "core-table-body",
+  },
+  {
+    code: "CSE 250",
+    name: "Circuits and Electronics",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 251",
+    name: "Electronic Devices and Circuits",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 310",
+    name: "Object Oriented Programming",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 320",
+    name: "Data Communication",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 341",
+    name: "Microprocessor",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 342",
+    name: "Computer Systems Engineering",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 350",
+    name: "Digital Electronics and Pulse Techniques",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 360",
+    name: "Computer Interface",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 390",
+    name: "Technical Communication",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 391",
+    name: "Programming for the Internet",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 392",
+    name: "Signals and Systems",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 410",
+    name: "Advance Programming In UNIX",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 419",
+    name: "Programming Languages",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 424",
+    name: "Pattern Recognition",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 425",
+    name: "Neural Networks",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 426",
+    name: "Basic Graph Theory",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 427",
+    name: "Machine Learning",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 428",
+    name: "Image Processing",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 429",
+    name: "Basic Multimedia Theory",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 430",
+    name: "Digital Signal Processing",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 431",
+    name: "Natural Language Processing",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 432",
+    name: "Speech Recognition and Synthesis",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 460",
+    name: "VLSI Design",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 461",
+    name: "Digital System Design",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 462",
+    name: "Fault Tolerant Systems",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 471",
+    name: "System Analysis and Design",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 472",
+    name: "Human Computer Interface",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 473",
+    name: "Decision Support System",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 474",
+    name: "Simulation and Modeling",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 489",
+    name: "Special Topics",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 490",
+    name: "WAN Routing and Technologies / Special Topics",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "CSE 491",
+    name: "Independent Study",
+    credits: 3,
+    sectionId: "elective-table-body",
+  },
+  {
+    code: "ENG 091",
+    name: "Foundation Course",
+    credits: 0,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 101",
+    name: "English Fundamentals",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 102",
+    name: "English Composition I",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 103",
+    name: "Advanced Writing Skills and Presentation",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 092",
+    name: "Remedial Course in Mathematics",
+    credits: 0,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BIO 101",
+    name: "Introduction to Biology",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CHE 101",
+    name: "Introduction to Chemistry",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CSE 101",
+    name: "Introduction to Computer Science",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENV 103",
+    name: "Elements of Environmental Science",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 101",
+    name: "Fundamentals of Mathematics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 110",
+    name: "MATH I: Differential Calculus and Co-ordinate Geometry",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 120",
+    name: "MATH II: Integral Calculus and Differential Equations",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 215",
+    name: "MATH III: Complex Variables and Laplace Transformations",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "MAT 216",
+    name: "MATH IV: Linear Algebra and Fourier Analysis",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "PHY 101",
+    name: "Introduction to Physics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "PHY 111",
+    name: "Principles of Physics I",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "PHY 112",
+    name: "Principles of Physics II",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "STA 101",
+    name: "Introduction to Statistics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "STA 201",
+    name: "Elements of Statistics and Probabilities",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BNG 103",
+    name: "Bangla Language and Literature",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 110",
+    name: "English for Life",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 113",
+    name: "Introduction to English Poetry",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 114",
+    name: "Introduction to English Drama",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 115",
+    name: "Introduction English Prose",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ENG 333",
+    name: "Globalization and the Media",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HST 102",
+    name: "The Modern World",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HST 103",
+    name: "History of Bangladesh",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HST 104",
+    name: "Global History Lab - A History of World since 1300",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 101",
+    name: "World Civilization & Culture",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 102",
+    name: "Introduction to Philosophy",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 103",
+    name: "Ethics and Culture",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 207",
+    name: "Narratives of Truth and Lies",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 210",
+    name: "Streaming Media Cultures",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "HUM 301",
+    name: "In the Archives",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ANT 101",
+    name: "Introduction to Anthropology",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ANT 342",
+    name: "Body and Society",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ANT 351",
+    name: "Gender & Development",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BUS 102",
+    name: "Business - Basics, Ethics and Environment",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BUS 201",
+    name: "Business and Human Communication",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BUS 333",
+    name: "Social Entrepreneurship Practicum",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BUS 335",
+    name: "Sustainable Development and Social Enterprise",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "DEV 104",
+    name: "Foundations of International Development",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "DEV 101",
+    name: "Bangladesh Studies",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "DEV 201",
+    name: "Health, Culture and Development",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ECO 101",
+    name: "Introduction to Microeconomics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ECO 102",
+    name: "Introduction to Macroeconomics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "ECO 105",
+    name: "Introduction to Economics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "EMB 101",
+    name: "Emergence of Bangladesh",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 101",
+    name: "Introduction to Political Science",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 102",
+    name: "Comparative Governance",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 103",
+    name: "International Relations and Global Politics",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 201",
+    name: "Introduction to Civic Engagement",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 202",
+    name: "Foundations in Public Policy",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 203",
+    name: "Political Theory",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "POL 210",
+    name: "Youth and Global Movement",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "PSY 101",
+    name: "Introduction to Psychology",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "PSY 102",
+    name: "Understanding the Human Minds",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "SOC 101",
+    name: "Introduction to Sociology",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "SOC 201 / ANT 202",
+    name: "Social Inequality",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BU 201",
+    name: "Community Engagement and Action",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 201",
+    name: "Luxury and Oppression in a Globalized World (of Perfumes)",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 204",
+    name: "Communication for Social Change",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 301",
+    name: "For the Love of Food",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 302",
+    name: "The Pursuit of Wellbeing",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 303",
+    name: "Law for Life, Peace and Justice",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 304",
+    name: "Documentary Film: Theory and Practice",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 305",
+    name: "Borders and Beyond: Past and Future",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 306",
+    name: "Ethical Leadership",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 307",
+    name: "Art, Community and the Future",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 308",
+    name: "Social Dimensions of Faith and Development",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 309",
+    name: "Global Citizenship",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 310",
+    name: "Social Cohesion and Peace Building",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 314",
+    name: "Visual Storytelling: Understanding Society through Documentary Film",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "CST 333",
+    name: "Personal Finance for Sustainable Economic Wellbeing",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
+  {
+    code: "BUS 334",
+    name: "Social Intrapreneurship Practicum - Leading Change",
+    credits: 3,
+    sectionId: "fundamental-table-body",
+  },
 ];
 
 const coursePrerequisites = {
@@ -197,7 +857,7 @@ const streamDefinitions = [
   {
     id: "stream2-table-body",
     progressId: "stream2Progress",
-    required: 3,
+    required: 2,
     codes: [
       "BIO 101",
       "CHE 101",
@@ -384,7 +1044,8 @@ function createSuggestionButton(course, input = null) {
     option.addEventListener("mousedown", (event) => {
       event.preventDefault();
       input.value = `${course.code} ${course.name}`;
-      input.closest("tr").querySelector("input[name='credits']").value = course.credits;
+      input.closest("tr").querySelector("input[name='credits']").value =
+        course.credits;
       hideCourseSuggestions();
       calculateCgpa();
       saveState();
@@ -400,7 +1061,9 @@ function getCourseMetaText(course) {
   const parts = [`${course.credits} cr`];
 
   if (stream) {
-    parts.push(stream.id.replace("-table-body", "").replace("stream", "Stream "));
+    parts.push(
+      stream.id.replace("-table-body", "").replace("stream", "Stream "),
+    );
   }
 
   if (prerequisites?.hard?.length) {
@@ -417,12 +1080,17 @@ function findCatalogCourse(courseName) {
   const normalized = normalizeCourseKey(courseName);
   return courseCatalog.find((course) => {
     const courseKey = normalizeCourseKey(`${course.code} ${course.name}`);
-    return normalized === courseKey || normalized === normalizeCourseKey(course.code);
+    return (
+      normalized === courseKey || normalized === normalizeCourseKey(course.code)
+    );
   });
 }
 
 function normalizeCourseKey(courseName) {
-  const normalized = courseName.toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+  const normalized = courseName
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, " ")
+    .trim();
   const codeMatch = normalized.match(/\b([A-Z]{2,4})\s*(\d{3})\s*(L)?\b/);
   return codeMatch
     ? `${codeMatch[1]} ${codeMatch[2]}${codeMatch[3] || ""}`
@@ -434,7 +1102,10 @@ function getStreamForCourse(courseName) {
   return streamDefinitions.find((stream) => stream.codes.includes(key));
 }
 
-function getPreferredSectionId(courseName, fallbackSectionId = "fundamental-table-body") {
+function getPreferredSectionId(
+  courseName,
+  fallbackSectionId = "fundamental-table-body",
+) {
   const catalogCourse = findCatalogCourse(courseName);
   const stream = getStreamForCourse(courseName);
 
@@ -502,7 +1173,9 @@ function createRow() {
     calculateCgpa();
     saveState();
   });
-  courseInput.addEventListener("focus", () => updateCourseSuggestions(courseInput));
+  courseInput.addEventListener("focus", () =>
+    updateCourseSuggestions(courseInput),
+  );
   courseInput.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       hideCourseSuggestions();
@@ -582,8 +1255,8 @@ function updateCourseSuggestions(input) {
           ? 0
           : 1;
       const secondMatchesSection =
-        getPreferredSectionId(second.code, second.sectionId) === currentSection ||
-        second.sectionId === currentSection
+        getPreferredSectionId(second.code, second.sectionId) ===
+          currentSection || second.sectionId === currentSection
           ? 0
           : 1;
       return firstMatchesSection - secondMatchesSection;
@@ -620,16 +1293,19 @@ function updateGradeColor(select) {
     "grade-bg-a",
     "grade-bg-a-minus",
     "grade-bg-b",
+    "grade-bg-b-plus",
     "grade-bg-c",
     "grade-bg-d",
-    "grade-bg-f"
+    "grade-bg-f",
   );
-  
+
   const val = select.value;
   if (val === "A") {
     select.classList.add("grade-bg-a");
-  } else if (val === "A-" || val === "B+") {
+  } else if (val === "A-") {
     select.classList.add("grade-bg-a-minus");
+  } else if (val === "B+") {
+    select.classList.add("grade-bg-b-plus");
   } else if (val === "B" || val === "B-") {
     select.classList.add("grade-bg-b");
   } else if (val.startsWith("C")) {
@@ -640,7 +1316,6 @@ function updateGradeColor(select) {
     select.classList.add("grade-bg-f");
   }
 }
-
 
 function addCourseRow(targetId, item = null) {
   const tbody = document.getElementById(targetId);
@@ -654,7 +1329,7 @@ function addCourseRow(targetId, item = null) {
     const gradeSelect = row.querySelector("select[name='grade']");
     gradeSelect.value = item.grade;
     updateGradeColor(gradeSelect);
-    
+
     row.querySelector("input[name='repeat']").checked = item.repeat;
     row.querySelector("input[name='nonCredit']").checked = item.nonCredit;
     row.querySelector("input[name='projected']").checked = item.projected;
@@ -715,11 +1390,16 @@ function sumCredits(courses) {
 
 function calculateCgpa() {
   const courses = gatherCourses();
-  const completed = getCountedCourses(courses.filter((course) => !course.projected));
+  const completed = getCountedCourses(
+    courses.filter((course) => !course.projected),
+  );
   const projectedScenario = getCountedCourses(courses);
   const projectedOnly = courses.some(
     (course) =>
-      course.courseName && course.projected && !course.nonCredit && course.credits > 0,
+      course.courseName &&
+      course.projected &&
+      !course.nonCredit &&
+      course.credits > 0,
   );
 
   const currentPoints = sumPoints(completed);
@@ -728,13 +1408,17 @@ function calculateCgpa() {
   const projectedCredits = sumCredits(projectedScenario);
 
   const currentGpa = currentCredits === 0 ? 0 : currentPoints / currentCredits;
-  const projectedGpa = projectedCredits === 0 ? null : projectedPoints / projectedCredits;
+  const projectedGpa =
+    projectedCredits === 0 ? null : projectedPoints / projectedCredits;
 
   dom.currentCgpa.textContent = currentCredits ? currentGpa.toFixed(2) : "0.00";
   dom.projectedCgpa.textContent =
     projectedOnly && projectedGpa !== null ? projectedGpa.toFixed(2) : "--";
   dom.totalCredits.textContent = currentCredits;
-  dom.creditGoal.textContent = `of ${degreeCreditGoal} credits`;
+  dom.creditGoal.textContent =
+    projectedOnly && projectedCredits > currentCredits
+      ? `of ${degreeCreditGoal} credits (${projectedCredits} projected)`
+      : `of ${degreeCreditGoal} credits`;
 
   const progressPercent = Math.min(
     100,
@@ -751,6 +1435,8 @@ function calculateCgpa() {
 }
 
 function updateStreamProgress(completedCourses) {
+  let genedCompletedTotal = 0;
+
   streamDefinitions.forEach((stream) => {
     const progress = document.getElementById(stream.progressId);
     if (!progress) {
@@ -759,14 +1445,23 @@ function updateStreamProgress(completedCourses) {
 
     const completedCount = new Set(
       completedCourses
-        .filter((course) => stream.codes.includes(normalizeCourseKey(course.courseName)))
+        .filter((course) =>
+          stream.codes.includes(normalizeCourseKey(course.courseName)),
+        )
         .map((course) => normalizeCourseKey(course.courseName)),
     ).size;
-    const cappedCount = Math.min(completedCount, stream.required);
 
-    progress.textContent = `${cappedCount}/${stream.required} completed`;
+    genedCompletedTotal += completedCount;
+
+    progress.textContent = `${completedCount}/${stream.required} completed`;
     progress.classList.toggle("is-complete", completedCount >= stream.required);
   });
+
+  const genedProgress = document.getElementById("genedProgress");
+  if (genedProgress) {
+    genedProgress.textContent = `${genedCompletedTotal}/13 completed`;
+    genedProgress.classList.toggle("is-complete", genedCompletedTotal >= 13);
+  }
 }
 
 function saveState() {
@@ -789,14 +1484,12 @@ function loadState() {
 }
 
 function resetCourses() {
-  sectionIds.forEach(
-    (id) => {
-      const tbody = document.getElementById(id);
-      if (tbody) {
-        tbody.innerHTML = "";
-      }
-    },
-  );
+  sectionIds.forEach((id) => {
+    const tbody = document.getElementById(id);
+    if (tbody) {
+      tbody.innerHTML = "";
+    }
+  });
 }
 
 function populateInitialRows(courses = null) {
@@ -822,7 +1515,7 @@ function populateInitialRows(courses = null) {
         (course.courseName.toLowerCase().includes("advanced") ||
         course.courseName.toLowerCase().includes("algorithms")
           ? "core-table-body"
-        : course.courseName.toLowerCase().includes("machine learning")
+          : course.courseName.toLowerCase().includes("machine learning")
             ? "elective-table-body"
             : getPreferredSectionId(course.courseName));
       if (!sections[sectionId]) {
@@ -878,4 +1571,3 @@ function init() {
 }
 
 init();
-
