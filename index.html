@@ -10,15 +10,14 @@
     <div class="app-shell">
       <header class="app-header">
         <div>
-          <p class="eyebrow">Academic CGPA Calculator</p>
-          <h1>Track Your GPA Progress</h1>
+          <p class="eyebrow">BRACU CGPA Calculator</p>
         </div>
         <div class="header-actions">
-          <button type="button" class="icon-button" aria-label="Settings">
-            ⚙️
+          <button type="button" class="primary-button" id="calculateButton">
+            Recalculate Analytics
           </button>
-          <button type="button" class="icon-button" aria-label="History">
-            🕒
+          <button type="button" class="secondary-button" id="resetButton">
+            Purge Data
           </button>
         </div>
       </header>
@@ -47,7 +46,7 @@
                 style="width: 0%"
               ></span>
             </div>
-            <p class="summary-meta" id="creditGoal">of 120 units</p>
+            <p class="summary-meta" id="creditGoal">of 124 credits</p>
           </article>
         </section>
 
@@ -55,8 +54,7 @@
           <article class="course-section" data-category="Core">
             <div class="section-header">
               <div>
-                <p class="section-tag">Priority</p>
-                <h2>Core Curriculum</h2>
+                <h2>Program Core</h2>
               </div>
               <button
                 type="button"
@@ -64,7 +62,7 @@
                 data-action="add-row"
                 data-target="core-table-body"
               >
-                + Add row
+                + Add course
               </button>
             </div>
             <div class="table-wrapper">
@@ -75,7 +73,7 @@
                     <th>Credits</th>
                     <th>Grade</th>
                     <th title="Repeat counts as a retake attempt">Repeat</th>
-                    <th title="Exclude from CGPA">Non-credit</th>
+                    <th title="Exclude from CGPA">Not Taken</th>
                     <th>Projected</th>
                     <th></th>
                   </tr>
@@ -85,19 +83,18 @@
             </div>
           </article>
 
-          <article class="course-section" data-category="Concentration">
+          <article class="course-section" data-category="Elective">
             <div class="section-header">
               <div>
-                <p class="section-tag accent-cod">Concentration</p>
-                <h2>COD Courses</h2>
+                <h2>Program Electives</h2>
               </div>
               <button
                 type="button"
                 class="action-button"
                 data-action="add-row"
-                data-target="cod-table-body"
+                data-target="elective-table-body"
               >
-                + Add row
+                + Add courses
               </button>
             </div>
             <div class="table-wrapper">
@@ -108,12 +105,12 @@
                     <th>Credits</th>
                     <th>Grade</th>
                     <th>Repeat</th>
-                    <th>Non-credit</th>
+                    <th>Not Taken</th>
                     <th>Projected</th>
                     <th></th>
                   </tr>
                 </thead>
-                <tbody id="cod-table-body"></tbody>
+                <tbody id="elective-table-body"></tbody>
               </table>
             </div>
           </article>
@@ -121,8 +118,7 @@
           <article class="course-section" data-category="General">
             <div class="section-header">
               <div>
-                <p class="section-tag accent-fundamental">General</p>
-                <h2>Fundamental Courses</h2>
+                <h2>School Core</h2>
               </div>
               <button
                 type="button"
@@ -130,7 +126,7 @@
                 data-action="add-row"
                 data-target="fundamental-table-body"
               >
-                + Add row
+                + Add course
               </button>
             </div>
             <div class="table-wrapper">
@@ -141,13 +137,212 @@
                     <th>Credits</th>
                     <th>Grade</th>
                     <th>Repeat</th>
-                    <th>Non-credit</th>
+                    <th>Not Taken</th>
                     <th>Projected</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody id="fundamental-table-body"></tbody>
               </table>
+            </div>
+          </article>
+
+          <article class="course-section" data-category="Concentration">
+            <div class="section-header">
+              <div>
+                <h2>GenEd Courses</h2>
+              </div>
+            </div>
+            <div class="stream-grid">
+              <section class="stream-section" data-stream="stream1-table-body">
+                <div class="stream-header">
+                  <div>
+                    <p class="section-tag accent-cod">Stream 1</p>
+                    <h3>Writing Comprehension</h3>
+                  </div>
+                  <div class="stream-actions">
+                    <span class="completion-pill" id="stream1Progress"
+                      >0/2 completed</span
+                    >
+                    <button
+                      type="button"
+                      class="action-button"
+                      data-action="add-row"
+                      data-target="stream1-table-body"
+                    >
+                      + Add course
+                    </button>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Repeat</th>
+                        <th>Not Taken</th>
+                        <th>Projected</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="stream1-table-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="stream-section" data-stream="stream2-table-body">
+                <div class="stream-header">
+                  <div>
+                    <p class="section-tag accent-cod">Stream 2</p>
+                    <h3>Math & Natural Sciences</h3>
+                  </div>
+                  <div class="stream-actions">
+                    <span class="completion-pill" id="stream2Progress"
+                      >0/3 completed</span
+                    >
+                    <button
+                      type="button"
+                      class="action-button"
+                      data-action="add-row"
+                      data-target="stream2-table-body"
+                    >
+                      + Add course
+                    </button>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Repeat</th>
+                        <th>Not Taken</th>
+                        <th>Projected</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="stream2-table-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="stream-section" data-stream="stream3-table-body">
+                <div class="stream-header">
+                  <div>
+                    <p class="section-tag accent-cod">Stream 3</p>
+                    <h3>Arts & Humanities</h3>
+                  </div>
+                  <div class="stream-actions">
+                    <span class="completion-pill" id="stream3Progress"
+                      >0/3 completed</span
+                    >
+                    <button
+                      type="button"
+                      class="action-button"
+                      data-action="add-row"
+                      data-target="stream3-table-body"
+                    >
+                      + Add course
+                    </button>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Repeat</th>
+                        <th>Not Taken</th>
+                        <th>Projected</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="stream3-table-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="stream-section" data-stream="stream4-table-body">
+                <div class="stream-header">
+                  <div>
+                    <p class="section-tag accent-cod">Stream 4</p>
+                    <h3>Social Sciences</h3>
+                  </div>
+                  <div class="stream-actions">
+                    <span class="completion-pill" id="stream4Progress"
+                      >0/2 completed</span
+                    >
+                    <button
+                      type="button"
+                      class="action-button"
+                      data-action="add-row"
+                      data-target="stream4-table-body"
+                    >
+                      + Add course
+                    </button>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Repeat</th>
+                        <th>Not Taken</th>
+                        <th>Projected</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="stream4-table-body"></tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="stream-section" data-stream="stream5-table-body">
+                <div class="stream-header">
+                  <div>
+                    <p class="section-tag accent-cod">Stream 5</p>
+                    <h3>Communities, Seeking Transformation</h3>
+                  </div>
+                  <div class="stream-actions">
+                    <span class="completion-pill" id="stream5Progress"
+                      >0/1 completed</span
+                    >
+                    <button
+                      type="button"
+                      class="action-button"
+                      data-action="add-row"
+                      data-target="stream5-table-body"
+                    >
+                      + Add course
+                    </button>
+                  </div>
+                </div>
+                <div class="table-wrapper">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Course</th>
+                        <th>Credits</th>
+                        <th>Grade</th>
+                        <th>Repeat</th>
+                        <th>Not Taken</th>
+                        <th>Projected</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="stream5-table-body"></tbody>
+                  </table>
+                </div>
+              </section>
             </div>
           </article>
         </section>
@@ -161,14 +356,12 @@
           </button>
         </section>
       </main>
+      <br />
+
+      <hr />
 
       <footer class="app-footer">
-        <p>© 2026 Academic CGPA Calculator</p>
-        <nav>
-          <a href="#">Privacy</a>
-          <a href="#">Documentation</a>
-          <a href="#">API</a>
-        </nav>
+        <p>© 2026 Mohammed Sabbir Ahmed</p>
       </footer>
     </div>
 
@@ -178,7 +371,7 @@
           <input
             type="text"
             name="courseName"
-            placeholder="e.g. CS401 Advanced Algorithms"
+            placeholder="e.g. CSE 110 Programming Language I"
           />
         </td>
         <td>
@@ -186,17 +379,18 @@
         </td>
         <td>
           <select name="grade">
-            <option value="A">A</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B">B</option>
-            <option value="B-">B-</option>
-            <option value="C+">C+</option>
-            <option value="C">C</option>
-            <option value="C-">C-</option>
-            <option value="D+">D+</option>
-            <option value="D">D</option>
-            <option value="F">F</option>
+            <option value="A">A · 4.00 · 90-100</option>
+            <option value="A-">A- · 3.70 · 85-&lt;90</option>
+            <option value="B+">B+ · 3.30 · 80-&lt;85</option>
+            <option value="B">B · 3.00 · 75-&lt;80</option>
+            <option value="B-">B- · 2.70 · 70-&lt;75</option>
+            <option value="C+">C+ · 2.30 · 65-&lt;70</option>
+            <option value="C">C · 2.00 · 60-&lt;65</option>
+            <option value="C-">C- · 1.70 · 57-&lt;60</option>
+            <option value="D+">D+ · 1.30 · 55-&lt;57</option>
+            <option value="D">D · 1.00 · 52-&lt;55</option>
+            <option value="D-">D- · 0.70 · 50-&lt;52</option>
+            <option value="F">F · 0.00 · &lt;50</option>
           </select>
         </td>
         <td class="checkbox-cell">

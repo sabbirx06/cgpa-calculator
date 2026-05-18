@@ -204,6 +204,62 @@ h1 {
   overflow-x: auto;
 }
 
+.stream-grid {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.stream-section {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.stream-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stream-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.stream-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.completion-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid rgba(72, 244, 161, 0.3);
+  border-radius: 999px;
+  background: rgba(72, 244, 161, 0.08);
+  color: #9ff8c7;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.completion-pill.is-complete {
+  border-color: rgba(72, 244, 161, 0.55);
+  background: rgba(72, 244, 161, 0.16);
+  color: #48f4a1;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -228,6 +284,18 @@ td {
   font-size: 0.95rem;
 }
 
+tbody tr {
+  cursor: grab;
+}
+
+tbody tr:active {
+  cursor: grabbing;
+}
+
+tbody tr.dragging {
+  opacity: 0.45;
+}
+
 input[type="text"],
 input[type="number"],
 select {
@@ -237,6 +305,76 @@ select {
   background: rgba(255, 255, 255, 0.05);
   color: #eef2ff;
   padding: 12px 14px;
+}
+
+.course-suggestions {
+  position: absolute;
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid rgba(72, 244, 161, 0.28);
+  border-radius: 14px;
+  background: rgba(5, 7, 7, 0.96);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  padding: 6px;
+}
+
+.course-suggestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #eef2ff;
+  cursor: pointer;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.course-suggestion:hover,
+.course-suggestion:focus {
+  background: rgba(0, 209, 255, 0.12);
+  outline: none;
+}
+
+.course-suggestion span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-suggestion small {
+  flex: 0 1 auto;
+  color: #48f4a1;
+  font-size: 0.74rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+select {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  background-image:
+    linear-gradient(45deg, transparent 50%, #48f4a1 50%),
+    linear-gradient(135deg, #48f4a1 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-repeat: no-repeat;
+  background-size:
+    6px 6px,
+    6px 6px;
+  padding-right: 38px;
+}
+
+select option {
+  background: #0e1621;
+  color: #eef2ff;
 }
 
 input[type="number"] {
