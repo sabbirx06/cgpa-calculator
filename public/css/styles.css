@@ -578,7 +578,9 @@ button:focus {
   backdrop-filter: blur(12px);
   transform: translateY(50px);
   opacity: 0;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.3s ease;
 }
 
 .toast.show {
@@ -633,5 +635,149 @@ button:focus {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* mobile ui */
+
+/* =========================================================
+   MOBILE RESPONSIVE FIXES
+========================================================= */
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .app-header {
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .header-actions button {
+    width: 100%;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .summary-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .summary-value {
+    font-size: 2rem;
+  }
+
+  .section-header,
+  .stream-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .stream-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 720px;
+  }
+
+  th,
+  td {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  input[type="number"] {
+    min-width: 72px;
+  }
+
+  .controls-panel {
+    flex-direction: column;
+  }
+
+  .controls-panel button {
+    width: 100%;
+  }
+
+  .secondary-button {
+    min-width: unset;
+  }
+
+  .app-footer {
+    gap: 10px;
+  }
+
+  .app-footer nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .toast-container {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .toast {
+    width: 100%;
+  }
+
+  .course-suggestions {
+    max-width: calc(100vw - 28px);
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .summary-value {
+    font-size: 1.7rem;
+  }
+
+  .section-header h2,
+  .stream-header h3 {
+    font-size: 0.95rem;
+  }
+
+  .completion-pill {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+
+  .action-button,
+  .primary-button,
+  .secondary-button {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
 }
