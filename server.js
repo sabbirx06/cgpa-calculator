@@ -144,7 +144,7 @@ app.post('/api/courses', requireAuth, async (req, res) => {
           c.courseName, 
           parseInt(c.credits) || 3, 
           c.grade, 
-          c.repeatCourse, 
+          c.repeat, 
           c.nonCredit, 
           c.projected
         ]
