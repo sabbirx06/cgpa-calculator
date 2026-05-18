@@ -1469,6 +1469,47 @@ function updateStreamProgress(completedCourses) {
   }
 }
 
+let toastContainer;
+function showToast(message, isError = false) {
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.className = 'toast-container';
+    document.body.appendChild(toastContainer);
+  }
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  if (isError) toast.classList.add('error');
+  toast.textContent = message;
+  toastContainer.appendChild(toast);
+  toast.offsetHeight;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+let loadingOverlay;
+function setLoading(active, text = 'Saving...') {
+  if (!loadingOverlay) {
+    loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    const loadingText = document.createElement('div');
+    loadingText.className = 'loading-text';
+    loadingText.id = 'loadingTextNode';
+    loadingOverlay.append(spinner, loadingText);
+    document.body.appendChild(loadingOverlay);
+  }
+  document.getElementById('loadingTextNode').textContent = text;
+  if (active) {
+    loadingOverlay.classList.add('active');
+  } else {
+    loadingOverlay.classList.remove('active');
+  }
+}
+
 let saveTimeout;
 function saveState() {
   const courses = gatherCourses();
@@ -1495,6 +1536,8 @@ async function saveToBackend() {
   if (saveBtn) saveBtn.disabled = true;
   if (saveBtnBottom) saveBtnBottom.disabled = true;
 
+  setLoading(true, 'Syncing Data...');
+
   const courses = gatherCourses();
   try {
     const res = await fetch('/api/courses', {
@@ -1503,11 +1546,12 @@ async function saveToBackend() {
       body: JSON.stringify({ courses })
     });
     if (!res.ok) throw new Error('Save failed');
-    alert('Saved successfully!');
+    showToast('Progress synced successfully');
   } catch (err) {
     console.error(err);
-    alert('Failed to save to backend');
+    showToast('Failed to sync to database', true);
   } finally {
+    setLoading(false);
     if (saveBtn) saveBtn.disabled = false;
     if (saveBtnBottom) saveBtnBottom.disabled = false;
   }
