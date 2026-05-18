@@ -81,7 +81,7 @@ h1 {
   width: 44px;
   height: 44px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   color: #d5e6ff;
   cursor: pointer;
@@ -100,7 +100,7 @@ h1 {
 
 .summary-card {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
+  border-radius: 16px;
   padding: 22px;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
@@ -161,7 +161,7 @@ h1 {
 
 .course-section {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  border-radius: 16px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
 }
@@ -212,7 +212,7 @@ h1 {
 
 .stream-section {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
 }
@@ -301,7 +301,7 @@ input[type="number"],
 select {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.05);
   color: #eef2ff;
   padding: 12px 14px;
@@ -313,7 +313,7 @@ select {
   max-height: 260px;
   overflow-y: auto;
   border: 1px solid rgba(72, 244, 161, 0.28);
-  border-radius: 14px;
+  border-radius: 8px;
   background: rgba(5, 7, 7, 0.96);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
   backdrop-filter: blur(12px);
@@ -327,7 +327,7 @@ select {
   gap: 12px;
   width: 100%;
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   background: transparent;
   color: #eef2ff;
   cursor: pointer;
@@ -423,7 +423,7 @@ button:focus {
 .secondary-button {
   border: none;
   cursor: pointer;
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 14px 20px;
   transition:
     transform 0.2s ease,
