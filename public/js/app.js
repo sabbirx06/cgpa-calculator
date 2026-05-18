@@ -1006,7 +1006,12 @@ const dom = {
   creditGoal: document.getElementById("creditGoal"),
   creditProgress: document.getElementById("creditProgress"),
   calculateButton: document.getElementById("calculateButton"),
+  calculateButtonBottom: document.getElementById("calculateButtonBottom"),
   resetButton: document.getElementById("resetButton"),
+  resetButtonBottom: document.getElementById("resetButtonBottom"),
+  saveButton: document.getElementById("saveButton"),
+  saveButtonBottom: document.getElementById("saveButtonBottom"),
+  logoutButton: document.getElementById("logoutButton"),
   addButtons: document.querySelectorAll("button[data-action='add-row']"),
   rowTemplate: document.getElementById("courseRowTemplate"),
 };
@@ -1464,21 +1469,74 @@ function updateStreamProgress(completedCourses) {
   }
 }
 
+let saveTimeout;
 function saveState() {
   const courses = gatherCourses();
   localStorage.setItem(storageKey, JSON.stringify(courses));
+  
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    try {
+      await fetch('/api/courses', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ courses })
+      });
+    } catch (err) {
+      console.error('Auto-save failed', err);
+    }
+  }, 1000);
 }
 
-function loadState() {
+async function saveToBackend() {
+  const courses = gatherCourses();
+  try {
+    const res = await fetch('/api/courses', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ courses })
+    });
+    if (!res.ok) throw new Error('Save failed');
+    alert('Saved successfully!');
+  } catch (err) {
+    console.error(err);
+    alert('Failed to save to backend');
+  }
+}
+
+async function loadState() {
+  try {
+    const res = await fetch('/api/courses');
+    if (res.status === 401) {
+      window.location.href = '/login.html';
+      return null;
+    }
+    if (!res.ok) throw new Error('Fetch failed');
+    const data = await res.json();
+    
+    if (data && data.length > 0) {
+      return data.map(c => ({
+        sectionId: c.section_id,
+        originalIndex: c.original_index,
+        courseName: c.course_name,
+        credits: c.credits,
+        grade: c.grade,
+        repeat: c.repeat_course,
+        nonCredit: c.non_credit,
+        projected: c.projected
+      }));
+    }
+  } catch (error) {
+    console.warn("Unable to load from backend, trying local storage", error);
+  }
+
   const saved = localStorage.getItem(storageKey);
   if (!saved) {
     return null;
   }
-
   try {
     return JSON.parse(saved);
   } catch (error) {
-    console.warn("Unable to parse saved course data", error);
     return null;
   }
 }
@@ -1547,9 +1605,9 @@ function populateInitialRows(courses = null) {
   }
 }
 
-function init() {
+async function init() {
   createCourseList();
-  const savedCourses = loadState();
+  const savedCourses = await loadState();
   populateInitialRows(savedCourses);
   enableRowSorting();
   calculateCgpa();
@@ -1561,13 +1619,28 @@ function init() {
     });
   });
 
-  dom.calculateButton.addEventListener("click", calculateCgpa);
+  const onCalculate = () => calculateCgpa();
+  dom.calculateButton?.addEventListener("click", onCalculate);
+  dom.calculateButtonBottom?.addEventListener("click", onCalculate);
 
-  dom.resetButton.addEventListener("click", () => {
+  const onSave = () => saveToBackend();
+  dom.saveButton?.addEventListener("click", onSave);
+  dom.saveButtonBottom?.addEventListener("click", onSave);
+
+  const onLogout = async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/login.html';
+  };
+  dom.logoutButton?.addEventListener("click", onLogout);
+
+  const onReset = () => {
     localStorage.removeItem(storageKey);
     populateInitialRows();
     calculateCgpa();
-  });
+    saveState(); // sync empty state to backend
+  };
+  dom.resetButton?.addEventListener("click", onReset);
+  dom.resetButtonBottom?.addEventListener("click", onReset);
 }
 
 init();
