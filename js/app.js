@@ -475,11 +475,19 @@ function createRow() {
 
   const inputs = template.querySelectorAll("input, select");
   inputs.forEach((input) => {
-    input.addEventListener("change", () => {
+    input.addEventListener("change", (e) => {
+      if (e.target.name === "grade") {
+        updateGradeColor(e.target);
+      }
       calculateCgpa();
       saveState();
     });
   });
+
+  const gradeSelect = template.querySelector("select[name='grade']");
+  if (gradeSelect) {
+    updateGradeColor(gradeSelect);
+  }
 
   const courseInput = template.querySelector("input[name='courseName']");
   const creditsInput = template.querySelector("input[name='credits']");
@@ -607,6 +615,33 @@ function hideCourseSuggestions() {
   }
 }
 
+function updateGradeColor(select) {
+  select.classList.remove(
+    "grade-bg-a",
+    "grade-bg-a-minus",
+    "grade-bg-b",
+    "grade-bg-c",
+    "grade-bg-d",
+    "grade-bg-f"
+  );
+  
+  const val = select.value;
+  if (val === "A") {
+    select.classList.add("grade-bg-a");
+  } else if (val === "A-" || val === "B+") {
+    select.classList.add("grade-bg-a-minus");
+  } else if (val === "B" || val === "B-") {
+    select.classList.add("grade-bg-b");
+  } else if (val.startsWith("C")) {
+    select.classList.add("grade-bg-c");
+  } else if (val.startsWith("D")) {
+    select.classList.add("grade-bg-d");
+  } else if (val === "F") {
+    select.classList.add("grade-bg-f");
+  }
+}
+
+
 function addCourseRow(targetId, item = null) {
   const tbody = document.getElementById(targetId);
   const row = createRow();
@@ -616,7 +651,10 @@ function addCourseRow(targetId, item = null) {
   if (item) {
     row.querySelector("input[name='courseName']").value = item.courseName;
     row.querySelector("input[name='credits']").value = item.credits;
-    row.querySelector("select[name='grade']").value = item.grade;
+    const gradeSelect = row.querySelector("select[name='grade']");
+    gradeSelect.value = item.grade;
+    updateGradeColor(gradeSelect);
+    
     row.querySelector("input[name='repeat']").checked = item.repeat;
     row.querySelector("input[name='nonCredit']").checked = item.nonCredit;
     row.querySelector("input[name='projected']").checked = item.projected;
