@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Academic CGPA Calculator</p>
+          <h1>Track Your GPA Progress</h1>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="icon-button" aria-label="Settings">
+            ⚙️
+          </button>
+          <button type="button" class="icon-button" aria-label="History">
+            🕒
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="summary-grid" aria-label="Summary dashboard">
+          <article class="summary-card summary-primary">
+            <p class="summary-label">Current CGPA</p>
+            <p class="summary-value" id="currentCgpa">0.00</p>
+            <p class="summary-meta" id="currentChange">
+              Based on completed courses
+            </p>
+          </article>
+          <article class="summary-card summary-secondary">
+            <p class="summary-label">Projected CGPA</p>
+            <p class="summary-value" id="projectedCgpa">--</p>
+            <p class="summary-meta">Includes planned grades</p>
+          </article>
+          <article class="summary-card summary-tertiary">
+            <p class="summary-label">Total Credit Hours</p>
+            <p class="summary-value" id="totalCredits">0</p>
+            <div class="progress-bar" aria-hidden="true">
+              <span
+                class="progress-fill"
+                id="creditProgress"
+                style="width: 0%"
+              ></span>
+            </div>
+            <p class="summary-meta" id="creditGoal">of 120 units</p>
+          </article>
+        </section>
+
+        <section class="course-grid">
+          <article class="course-section" data-category="Core">
+            <div class="section-header">
+              <div>
+                <p class="section-tag">Priority</p>
+                <h2>Core Curriculum</h2>
+              </div>
+              <button
+                type="button"
+                class="action-button"
+                data-action="add-row"
+                data-target="core-table-body"
+              >
+                + Add row
+              </button>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Credits</th>
+                    <th>Grade</th>
+                    <th title="Repeat counts as a retake attempt">Repeat</th>
+                    <th title="Exclude from CGPA">Non-credit</th>
+                    <th>Projected</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="core-table-body"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="course-section" data-category="Concentration">
+            <div class="section-header">
+              <div>
+                <p class="section-tag accent-cod">Concentration</p>
+                <h2>COD Courses</h2>
+              </div>
+              <button
+                type="button"
+                class="action-button"
+                data-action="add-row"
+                data-target="cod-table-body"
+              >
+                + Add row
+              </button>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Credits</th>
+                    <th>Grade</th>
+                    <th>Repeat</th>
+                    <th>Non-credit</th>
+                    <th>Projected</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="cod-table-body"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="course-section" data-category="General">
+            <div class="section-header">
+              <div>
+                <p class="section-tag accent-fundamental">General</p>
+                <h2>Fundamental Courses</h2>
+              </div>
+              <button
+                type="button"
+                class="action-button"
+                data-action="add-row"
+                data-target="fundamental-table-body"
+              >
+                + Add row
+              </button>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Credits</th>
+                    <th>Grade</th>
+                    <th>Repeat</th>
+                    <th>Non-credit</th>
+                    <th>Projected</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="fundamental-table-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="controls-panel">
+          <button type="button" class="primary-button" id="calculateButton">
+            Recalculate Analytics
+          </button>
+          <button type="button" class="secondary-button" id="resetButton">
+            Purge Data
+          </button>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>© 2026 Academic CGPA Calculator</p>
+        <nav>
+          <a href="#">Privacy</a>
+          <a href="#">Documentation</a>
+          <a href="#">API</a>
+        </nav>
+      </footer>
+    </div>
+
+    <template id="courseRowTemplate">
+      <tr>
+        <td>
+          <input
+            type="text"
+            name="courseName"
+            placeholder="e.g. CS401 Advanced Algorithms"
+          />
+        </td>
+        <td>
+          <input type="number" name="credits" min="0" step="1" value="3" />
+        </td>
+        <td>
+          <select name="grade">
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+          </select>
+        </td>
+        <td class="checkbox-cell">
+          <input type="checkbox" name="repeat" />
+        </td>
+        <td class="checkbox-cell">
+          <input type="checkbox" name="nonCredit" />
+        </td>
+        <td class="checkbox-cell">
+          <input type="checkbox" name="projected" />
+        </td>
+        <td class="remove-cell">
+          <button type="button" class="remove-row" aria-label="Remove row">
+            ✕
+          </button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
