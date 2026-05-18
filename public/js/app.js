@@ -1489,6 +1489,12 @@ function saveState() {
 }
 
 async function saveToBackend() {
+  const saveBtn = dom.saveButton;
+  const saveBtnBottom = dom.saveButtonBottom;
+  
+  if (saveBtn) saveBtn.disabled = true;
+  if (saveBtnBottom) saveBtnBottom.disabled = true;
+
   const courses = gatherCourses();
   try {
     const res = await fetch('/api/courses', {
@@ -1501,6 +1507,9 @@ async function saveToBackend() {
   } catch (err) {
     console.error(err);
     alert('Failed to save to backend');
+  } finally {
+    if (saveBtn) saveBtn.disabled = false;
+    if (saveBtnBottom) saveBtnBottom.disabled = false;
   }
 }
 
